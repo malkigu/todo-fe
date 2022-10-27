@@ -7,7 +7,7 @@ RUN npm install
 FROM node:14-alpine as testing
 WORKDIR /app
 ENV PATH=/app/node_modules/.bin:$PATH
-COPY --from builder /app/node_modules/ /app/node_modules/
+COPY --from=builder /app/node_modules/ /app/node_modules/
 COPY . .
 ENV CI=true
 RUN npm test || true
@@ -15,6 +15,6 @@ RUN npm test || true
 FROM node:14-alpine as delivery
 WORKDIR /app 
 ENV PATH=/app/node_modules/.bin:$PATH
-COPY --from builder /app/node_modules/ /app/node_modules/
+COPY --from=builder /app/node_modules/ /app/node_modules/
 COPY . .
 CMD npm start
