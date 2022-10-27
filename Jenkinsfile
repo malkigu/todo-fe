@@ -1,6 +1,9 @@
 pipeline {
     agent any
-
+    environment {
+        DOCKER_USERNAME = credentials('jenkins-aws-secret-key-id')
+        DOCKER_PASSWORD = credentials('jenkins-aws-secret-access-key')
+    }
     stages {
         stage('Build') {
             steps {
