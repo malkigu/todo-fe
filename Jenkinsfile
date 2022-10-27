@@ -1,9 +1,5 @@
 pipeline {
     agent any
-    environment {
-        BITBUCKET_COMMON_CREDS_USR = credentials('jenkins-user-for-artifact-repository')
-        BITBUCKET_COMMON_CREDS_PSW = credentials('jenkins-user-for-artifact-repository')
-    }
     stages {
         stage('Build') {
             steps {
@@ -32,7 +28,7 @@ pipeline {
          stage('Push') {
             steps {
                 echo 'pushing to dockerhub....'
-                sh 'docker login -u $BITBUCKET_COMMON_CREDS_USR -p $BITBUCKET_COMMON_CREDS_PSW'
+                sh 'docker login -u malkigu -p Mg14102001'
                 sh 'docker push malkigu/todo-fe:latest'
             }
         }
