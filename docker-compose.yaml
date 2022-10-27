@@ -1,7 +1,7 @@
 version: "3.2"
 services:
  web:
-   Image: [yanivomc/todo-fe:latest]
+   Image: malkigu/todo-fe:latest
    depends_on:
      - api
    ports:
@@ -9,7 +9,7 @@ services:
    networks:
      - network-backend
  api:
-   Image: [yanivomc/todo-be:latest]
+   Image: malkigu/todo-be:latest
    depends_on:
      - mongo
    ports:
