@@ -23,13 +23,14 @@ pipeline {
          stage('Cleanup') {
             steps {
                 echo 'Cleanup....'
-                sh 'docker system prune'
+                sh 'docker system prune -f'
             }
         }
          stage('Push') {
             steps {
                 echo 'pushing to dockerhub....'
                 sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+                sh 'docker push malkigu/todo-fe:latest'
             }
         }
     }
